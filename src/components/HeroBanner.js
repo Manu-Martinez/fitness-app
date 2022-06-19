@@ -13,15 +13,14 @@ const HeroBanner = () => {
 		</Typography>
 		<Typography fontWeight={700}
 		sx={{
-			fontSize: { lg: '44px', xs: '40px' }
+		fontSize: { lg: '44px', xs: '40px' }
 		}}
 		mb='23px'
 		mt='30px'
 		>
 			Sweat, Smile <br /> and Repeat
 		</Typography>
-		<Typography fontSize='22px'
-		lineHeight='35px' mb={4}>
+		<Typography fontSize='22px' lineHeight='35px' mb={4}>
 			Check out the most effective exercises
 		</Typography>
 		<Button variant='contained' color='error' href='#exercises'
@@ -29,10 +28,10 @@ const HeroBanner = () => {
 		<Typography fontWeight={600}
 		color='#FF2625'
 		sx= {{
-			opacity: 0.1,
-			display: {
-				lg: 'block', xs: 'none'
-			}
+		opacity: 0.1,
+		display: {
+			lg: 'block', xs: 'none'
+		}
 		}}
 		fontSize='200px'
 		>
