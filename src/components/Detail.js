@@ -12,7 +12,7 @@ const Detail = ({ exerciseDetail }) => {
 	const extraDetail = [
 		{
 			icon: BodyPartImage,
-			name: BodyPart,
+			name: bodyPart,
 		},
 		{
 			icon: TargetImage,
