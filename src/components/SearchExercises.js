@@ -13,10 +13,10 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 			const bodyPartsData = await fetchData('https://exercisedb.p.rapid.api.com/exercises/bodyPartList', exerciseOptions);
 
 			setBodyParts(['all', ...bodyPartsData]);
-		}
+		};
 
 		fetchExercisesData();
-	}, [])
+	}, []);
 
 	const HandleSearch = async () => {
 		if (search) {
@@ -25,8 +25,10 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 			(exercise) => exercise.name.toLowerCase().includes(search) 
 			|| exercise.target.toLowerCase().includes(search)
 			|| exercise.equipment.toLowerCase().includes(search)
-			|| exercise.bodyPart.toLowerCase().includes(search)
+			|| exercise.bodyPart.toLowerCase().includes(search),
 			);
+			
+			window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
 
 			setSearch('');
 			setExercises(searchedExercises);
@@ -35,9 +37,8 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
 return (
 	<Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
-		<Typography fontWeight={700} 
-		sx= {{ fontSize: { lg: '44px', xs: '30px'} }} 
-		mb="50px" textAlign="center"> Awesome Exercises You <br /> Should Know
+		<Typography fontWeight={700} sx= {{ fontSize: { lg: '44px', xs: '30px'} }} mb="50px" textAlign="center">
+			Awesome Exercises You <br /> Should Know
 		</Typography>
 		<Box position="relative" mb="72px">
 			<TextField
@@ -61,7 +62,7 @@ return (
 			</Button>
 		</Box>
 		<Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-			<HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} />
+			<HorizontalScrollbar data={bodyParts} bodyParts bodyPart={bodyPart} setBodyPart={setBodyPart} />
 		</Box>
 	</Stack>
 );
