@@ -10,9 +10,9 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
     useEffect(() => {
 		const fetchExercisesData = async () => {
-			const bodyPartsData = await fetchData('https://exercisedb.p.rapid.api.com/exercises/bodyPartList', exerciseOptions);
+			const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
 
-			setBodyParts(['all', ...bodyPartsData]);
+			setBodyParts(['all', ...bodyPartsData]); 
 		};
 
 		fetchExercisesData();
@@ -21,11 +21,12 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 	const HandleSearch = async () => {
 		if (search) {
 			const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-			const searchedExercises = exercisesData.filter(
-			(exercise) => exercise.name.toLowerCase().includes(search) 
-			|| exercise.target.toLowerCase().includes(search)
-			|| exercise.equipment.toLowerCase().includes(search)
-			|| exercise.bodyPart.toLowerCase().includes(search),
+			// @ts-ignore 
+			const searchedExercises = exercisesData?.filter ( 
+			(item) => item.name.toLowerCase().includes(search) 
+			|| item.target.toLowerCase().includes(search)
+			|| item.equipment.toLowerCase().includes(search)
+			|| item.bodyPart.toLowerCase().includes(search),
 			);
 			
 			window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
@@ -47,7 +48,7 @@ return (
 				backgroundColor: '#fff',
 				borderRadius: '40px'
 			}} 
-			height="76px" value="" onChange={(e) => {}} placeholder="Search Exercises" type="text"
+			height="76px" value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder="Search Exercises" type="text"
 			/>
 			<Button className='search-btn'
 			sx= {{ bgcolor: '#FF2625', color: '#fff', textTransform: 'none',
@@ -57,7 +58,7 @@ return (
 				position: 'absolute',
 				right: '0'
 			}} 
-			onChange ={HandleSearch}> 
+			onClick={HandleSearch}> 
 			Search
 			</Button>
 		</Box>

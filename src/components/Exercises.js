@@ -10,7 +10,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
 
-  useEffect(() => {
+  useEffect((setExercises) => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
 
@@ -24,12 +24,12 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     };
 
     fetchExercisesData();
-  }, [bodyPart]);  // eslint-disable-line
+  }, [bodyPart]);  
 
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise); //eslint-disable-line
+  const currentExercises = exercises?.slice(indexOfFirstExercise, indexOfLastExercise); //eslint-disable-line
 
   const paginate = (event, value) => {
     setCurrentPage(value);
